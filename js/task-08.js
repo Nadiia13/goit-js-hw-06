@@ -3,10 +3,9 @@ loginForm.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
     event.preventDefault();
-    const formElements = event.currentTarget.elements
-    console.log(formElements);
-    const email = formElements.email;
-    const password = formElements.password;
+    const {email, password} = event.currentTarget.elements
+    console.log({email, password});
+    
     const formData = new FormData(event.currentTarget);
     console.log(formData)
 
@@ -19,9 +18,9 @@ function onFormSubmit(event) {
         alert("Fill in the fields on the form");
     } else {
         alert("The form has been submitted!")
-        console.log(`The form has email ${email.value} and password ${password.value}`);
+        console.log({ email: email.value, password: password.value });
     }
-
+        event.currentTarget.reset();
 }
 
 const form = document.querySelector(".login-form").reset();
